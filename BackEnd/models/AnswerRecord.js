@@ -42,6 +42,11 @@ const AnswerRecord = db.define("answer_record", {
     defaultValue: null,
     primaryKey: false,
     foreignKey: [Object]
+  },
+  answer_text: {
+    type: "VARCHAR(200)",
+    defaultValue: null,
+    primaryKey: false
   }
 });
 module.exports = AnswerRecord;

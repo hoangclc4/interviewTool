@@ -27,25 +27,12 @@ const Question = db.define(
       defaultValue: 30,
       primaryKey: false
     },
-    is_one_right_ans: {
-      type: "TINYINT(1)",
+    type: {
+      type: "TINYINT(3)",
       allowNull: false,
       defaultValue: 1
     }
   },
   { underscored: true }
 );
-// Question.associate = () => {
-//   Question.belongsToMany(QuestionTable, {
-//     through: QuestionTable_Question,
-//     foreignKey: "question_id",
-//     as: "question_table"
-//   });
-// };
-// Question.hasMany(QuestionTable, {
-//   through: QuestionTable_Question,
-//   foreignKey: "question_id"
-// });
-
-//Question.hasMany(QuestionChoices, { foreignKey: "question_id" });
 module.exports = Question;

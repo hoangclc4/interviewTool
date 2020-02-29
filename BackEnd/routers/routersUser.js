@@ -91,7 +91,7 @@ router.post("/api/user_answer", verifyToken, (req, res) => {
               req.body[i].user_id = authData.user_id.id;
               req.body[i].id = id + 1;
               let { question_choices } = req.body[i].multi_choice;
-              if (req.body[i].is_one_right_ans)
+              if (req.body[i].type !== 2)
                 await AnswerRecord.create(req.body[i]);
               else {
                 //unattempt Multi
