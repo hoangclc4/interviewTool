@@ -2,8 +2,14 @@ import React from "react";
 import "./QuestionShow.scss";
 import TimeBar from "../Timebar/TimeBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckSquare, faAngleRight, faPause, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { faSquare } from '@fortawesome/free-regular-svg-icons';
+import {
+  faCheckSquare,
+  faAngleRight,
+  faPause,
+  faCheck,
+  faTimes
+} from "@fortawesome/free-solid-svg-icons";
+import { faSquare } from "@fortawesome/free-regular-svg-icons";
 class QuestionShow extends React.Component {
   constructor(props) {
     super(props);
@@ -12,7 +18,8 @@ class QuestionShow extends React.Component {
       question: "",
       question_choices: [],
       time: 0,
-      is_one_right_ans: true,
+      answer_text: "",
+      type: 1,
       disableButton: false,
       clicked: false,
       mutiCheckArr: []
@@ -26,36 +33,39 @@ class QuestionShow extends React.Component {
     });
   }
   componentWillUnmount() {
-    let { question_choices, is_one_right_ans, mutiCheckArr } = this.state;
-    if (is_one_right_ans) {
+    let { question_choices, type, mutiCheckArr, answer_text } = this.state;
+    if (type === 1) {
       let index = localStorage.getItem("choiceIndex");
       if (index === null) {
         let questionChoice = {
           id: 0
         };
-        this.props.recordAnswer(this.state.id, questionChoice, {},is_one_right_ans);
+        this.props.recordAnswer(this.state.id, questionChoice, {}, null, type);
       } else
-        this.props.recordAnswer(this.state.id, question_choices[index], {},is_one_right_ans);
+        this.props.recordAnswer(
+          this.state.id,
+          question_choices[index],
+          {},
+          null,
+          type
+        );
       localStorage.removeItem("choiceIndex");
-    } else {
+    } else if (type === 2) {
       let multiArr = { question_choices: [] };
       for (let i = 0; i < mutiCheckArr.length; i++)
         multiArr.question_choices[i] = {
           id: question_choices[mutiCheckArr[i]].id
         };
       console.log("multiArr", multiArr);
-      this.props.recordAnswer(this.state.id, { id: 0 }, multiArr,is_one_right_ans);
+      this.props.recordAnswer(this.state.id, { id: 0 }, multiArr, null, type);
+    } else {
+      this.props.recordAnswer(this.state.id, { id: 0 }, {}, answer_text, type);
     }
   }
   onClickCheckAnswer = index => {
     //let { index, question } = this.props;
-    let {
-      question_choices,
-      disableButton,
-      is_one_right_ans,
-      mutiCheckArr
-    } = this.state;
-    if (is_one_right_ans) {
+    let { question_choices, disableButton, type, mutiCheckArr } = this.state;
+    if (type === 1) {
       if (disableButton === false) {
         this.setState({
           clicked: true
@@ -148,6 +158,13 @@ class QuestionShow extends React.Component {
 
     this.props.doneQuestionHandler();
   };
+  onChangeTextHandler = event => {
+    let value = event.target.value;
+    let name = event.target.name;
+    this.setState({
+      [name]: value
+    });
+  };
   render() {
     const {
       time,
@@ -155,11 +172,25 @@ class QuestionShow extends React.Component {
       question_choices,
       disableButton,
       clicked,
-      is_one_right_ans,
-      mutiCheckArr
+      type,
+      mutiCheckArr,
+      answer_text
     } = this.state;
     let { questionsLength, index } = this.props;
     console.log("questonchoices", question_choices);
+    const textAnswer = () => {
+      return (
+        <div>
+          <input
+            type="text"
+            name="answer_text"
+            placeholder="add the answer for this question"
+            value={answer_text}
+            onChange={this.onChangeTextHandler}
+          />
+        </div>
+      );
+    };
     let colorButtons = ["#2F6DAE", "#2C9CA6", "#ECA82C", "#D4546A", "#5cd65c"];
     const element = question_choices.map((answer, index) => {
       let color = () => {
@@ -173,18 +204,28 @@ class QuestionShow extends React.Component {
       };
 
       let tick = () => {
-        if (answer.check && clicked) return <div className="doing-quiz-show-result-check" ><FontAwesomeIcon icon={faCheck} size="4x" /></div>;
+        if (answer.check && clicked)
+          return (
+            <div className="doing-quiz-show-result-check">
+              <FontAwesomeIcon icon={faCheck} size="4x" />
+            </div>
+          );
         else {
           if (!answer.check && clicked) {
-            return <div className="doing-quiz-show-result-check">< FontAwesomeIcon icon={faTimes} size="4x" /></div >;
+            return (
+              <div className="doing-quiz-show-result-check">
+                <FontAwesomeIcon icon={faTimes} size="4x" />
+              </div>
+            );
           }
         }
-
-
-      }
+      };
       let mutiCheck = () => {
         for (let i = 0; i < mutiCheckArr.length; i++)
-          if (mutiCheckArr[i] === index) return <FontAwesomeIcon size="lg" color="#008000" icon={faCheckSquare} />;
+          if (mutiCheckArr[i] === index)
+            return (
+              <FontAwesomeIcon size="lg" color="#008000" icon={faCheckSquare} />
+            );
         return <FontAwesomeIcon size="lg" color="#008000" icon={faSquare} />;
       };
       return (
@@ -194,7 +235,6 @@ class QuestionShow extends React.Component {
           style={{ opacity: opacity() }}
         >
           <button
-
             onClick={() => {
               this.onClickCheckAnswer(index);
               localStorage.setItem("choiceIndex", index);
@@ -203,7 +243,7 @@ class QuestionShow extends React.Component {
             style={{ background: color() }}
             className="question-answer"
           >
-            {!is_one_right_ans ? (
+            {type === 2 ? (
               <div className="doing-quiz-check-ans-multi">{mutiCheck()}</div>
             ) : null}
             {tick()}
@@ -214,7 +254,7 @@ class QuestionShow extends React.Component {
     });
 
     return (
-      <div className="question-show-container" >
+      <div className="question-show-container">
         <TimeBar TimeOut={time} />
         <div className="question-show-actions">
           <button className="action-pause">
@@ -231,11 +271,26 @@ class QuestionShow extends React.Component {
             <div className="question-content">
               <h5> {question}</h5>
             </div>
-            <div className="question-answers-container">{element}</div>
+
+            <div className="question-answers-container">
+              {type !== 3 ? (
+                element
+              ) : (
+                <div>
+                  <input
+                    type="text"
+                    name="answer_text"
+                    placeholder="add the answer for this question"
+                    value={answer_text}
+                    onChange={this.onChangeTextHandler}
+                  />
+                </div>
+              )}
+            </div>
           </div>
           <div
             className="question-detail-footer"
-            style={is_one_right_ans ? { display: "none" } : null}
+            style={type === 1 ? { display: "none" } : null}
           >
             <div className="change-question-group">
               <button onClick={this.onSubmitMutiSelect}>

@@ -20,7 +20,7 @@ class ReviewAttempt extends React.Component {
             question_choices: []
           },
           question: {
-            is_one_right_ans: 1,
+            type: 1,
             question_choices: []
           },
           question_choice: {
@@ -45,7 +45,12 @@ class ReviewAttempt extends React.Component {
   calculateAccuracy = () => {
     let { data } = this.state;
     let rightAnswer = this.correctAnswer();
-    let accuracy = (rightAnswer / data.length).toFixed(2) * 100;
+    let textQuestion = 0;
+    data.forEach(sub => {
+      if (sub.question.type === 3) textQuestion++;
+    });
+    let accuracy =
+      (rightAnswer / (data.length - textQuestion)).toFixed(2) * 100;
     return accuracy;
   };
   correctAnswer = () => {
@@ -53,9 +58,9 @@ class ReviewAttempt extends React.Component {
     //calculate the accuracy
     let rightAnswer = 0;
     data.forEach(attempt => {
-      if (attempt.question.is_one_right_ans) {
+      if (attempt.question.type === 1) {
         if (attempt.question_choice.is_right === 1) rightAnswer++;
-      } else {
+      } else if (attempt.question.type === 2) {
         let questionRightTotal = 0;
         let multiRightTotal = 0;
         for (let i = 0; i < attempt.question.question_choices.length; i++)
@@ -75,18 +80,27 @@ class ReviewAttempt extends React.Component {
   inCorrectAnswer = () => {
     let { data } = this.state;
     let inCorrectAnswer =
-      data.length - (this.correctAnswer() + this.unAttemptAnswer());
+      data.length -
+      (this.correctAnswer() + this.unAttemptAnswer() + this.textAnswer());
 
     return inCorrectAnswer;
+  };
+  textAnswer = () => {
+    let { data } = this.state;
+    let textAnswer = 0;
+    data.forEach(attempt => {
+      if (attempt.question.type === 3) textAnswer++;
+    });
+    return textAnswer;
   };
   unAttemptAnswer = () => {
     let { data } = this.state;
     let unAttemptAnswer = 0;
     //   data.length - (this.correctAnswer() + this.inCorrectAnswer());
     data.forEach(attempt => {
-      if (attempt.question.is_one_right_ans) {
+      if (attempt.question.type === 1) {
         if (attempt.question_choice.is_right === 2) unAttemptAnswer++;
-      } else {
+      } else if (attempt.question.type === 2) {
         let { multi_choice_id } = attempt;
         if (multi_choice_id === null) unAttemptAnswer++;
       }
@@ -98,40 +112,47 @@ class ReviewAttempt extends React.Component {
     let multiRightCount = 0;
     let questionRightTotal = 0;
     let choiceColor = "";
-    let { question_choices, is_one_right_ans } = data.question;
-
-    for (let i = 0; i < question_choices.length; i++)
-      if (data.question.question_choices[i].is_right === 1)
-        questionRightTotal++;
-    for (let i = 0; i < question_choices.length; i++) {
-      if (is_one_right_ans) {
-        if (
-          data.question_choice.id === question_choices[i].id &&
-          data.question_choice.is_right === 1 &&
-          question_choices[i].is_right === 1
-        ) {
-          //question right border
-          choiceColor = " #00995c ";
-        } else if (data.question_choice.is_right === 0) {
-          //question wrong border
-          choiceColor = " #ec0b43 ";
-        }
-      } else {
-        if (data.multi_choice_id !== null) {
-          for (let j = 0; j < data.multi_choice.question_choices.length; j++) {
-            if (
-              data.multi_choice.question_choices[j].id ===
-              question_choices[i].id
-            )
-              if (
-                data.multi_choice.question_choices[j].is_right === 1 &&
-                question_choices[i].is_right === 1
-              )
-                multiRightCount++;
-              else multiRightCount--;
+    let { question_choices, type } = data.question;
+    if (type === 3) choiceColor = " #ffc107 ";
+    else {
+      for (let i = 0; i < question_choices.length; i++)
+        if (data.question.question_choices[i].is_right === 1)
+          questionRightTotal++;
+      for (let i = 0; i < question_choices.length; i++) {
+        if (type === 1) {
+          if (
+            data.question_choice.id === question_choices[i].id &&
+            data.question_choice.is_right === 1 &&
+            question_choices[i].is_right === 1
+          ) {
+            //question right border
+            choiceColor = " #00995c ";
+          } else if (data.question_choice.is_right === 0) {
+            //question wrong border
+            choiceColor = " #ec0b43 ";
           }
-          if (multiRightCount === questionRightTotal) choiceColor = " #00995c ";
-          else choiceColor = " #ec0b43 ";
+        } else if (type === 2) {
+          if (data.multi_choice_id !== null) {
+            for (
+              let j = 0;
+              j < data.multi_choice.question_choices.length;
+              j++
+            ) {
+              if (
+                data.multi_choice.question_choices[j].id ===
+                question_choices[i].id
+              )
+                if (
+                  data.multi_choice.question_choices[j].is_right === 1 &&
+                  question_choices[i].is_right === 1
+                )
+                  multiRightCount++;
+                else multiRightCount--;
+            }
+            if (multiRightCount === questionRightTotal)
+              choiceColor = " #00995c ";
+            else choiceColor = " #ec0b43 ";
+          }
         }
       }
     }

@@ -36,7 +36,8 @@ class DoingQuiz extends React.Component {
     question_id,
     question_choice,
     multi_choice,
-    is_one_right_ans
+    answer_text,
+    type
   ) => {
     ///create data to send API
     let question_table_id = parseInt(this.props.match.params.question_table_id);
@@ -45,7 +46,8 @@ class DoingQuiz extends React.Component {
       question_id,
       choice_id: question_choice.id,
       multi_choice: multi_choice,
-      is_one_right_ans
+      answer_text: answer_text,
+      type
     };
     let dataPush = this.state.data;
     dataPush.push({ ...data });

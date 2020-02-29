@@ -48,7 +48,7 @@ class QuizCreatorQuestionInput extends React.Component {
     let { index, data, checkOneRightAnswer, questionType } = this.props;
     let { answer, question_id } = this.state;
     //console.log(this.props.checkOneRightAnswer);
-    if (questionType.isOneAnswer) {
+    if (questionType.typeAnswer === 1) {
       this.props.checkOneRightAnswerHandler(index);
       if (checkOneRightAnswer.isCheck === 0) {
         is_right = !this.state.is_right;
@@ -113,7 +113,7 @@ class QuizCreatorQuestionInput extends React.Component {
         question_id
       });
 
-    if (questionType.isOneAnswer && questionType.isChange) {
+    if (questionType.typeAnswer === 1 && questionType.isChange) {
       let reset = this.state;
       reset.is_right = false;
       this.props.onChangeAnswer(index, {

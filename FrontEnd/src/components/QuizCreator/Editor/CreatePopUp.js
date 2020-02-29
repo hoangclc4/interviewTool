@@ -36,7 +36,7 @@ class QuestionCreatePopup extends React.Component {
         id: 0,
         question: "",
         time: 30,
-        is_one_right_ans: true
+        type: 1
       },
       answers: [],
       checkOneRightAnswer: {
@@ -46,7 +46,7 @@ class QuestionCreatePopup extends React.Component {
       temptCheck: {},
       questionType: {
         title: "Single answer",
-        isOneAnswer: true,
+        typeAnswer: 1,
         isChange: false
       }
     };
@@ -72,11 +72,14 @@ class QuestionCreatePopup extends React.Component {
         }
       });
       let typeTitle = "";
-      let isOneAnswer = true;
-      if (data.is_one_right_ans) typeTitle = "Single answer";
-      else {
+      let typeAnswer = 1;
+      if (data.type === 1) typeTitle = "Single answer";
+      else if (data.type === 2) {
         typeTitle = "Multi-select";
-        isOneAnswer = false;
+        typeAnswer = 2;
+      } else {
+        typeTitle = "Text answer";
+        typeAnswer = 3;
       }
       let rightAnswerIndex = -1;
       for (let i = 0; i < data.question_choices.length; i++)
@@ -86,7 +89,7 @@ class QuestionCreatePopup extends React.Component {
         questionType: {
           ...questionType,
           title: typeTitle,
-          isOneAnswer: isOneAnswer
+          typeAnswer: typeAnswer
         },
         temptCheck: {
           ...temptCheck,
@@ -159,6 +162,8 @@ class QuestionCreatePopup extends React.Component {
     let isCheck = 0;
     for (let i = 0; i < listAns.length; i++)
       if (listAns[i].is_right && listAns[i].answer !== "") isCheck++;
+    // text ans dont have an ans so check it to call create QuestionAPI
+    if (this.state.questionType.typeAnswer === 3) isCheck++;
     if (isCheck === 0)
       Swal.fire({
         position: "top",
@@ -260,19 +265,20 @@ class QuestionCreatePopup extends React.Component {
     });
   };
   onSelectQuestionTypeHandler = event => {
-    var isTrueSet = event === "true";
+    var chooseType = parseInt(event);
     let title = "";
-    if (isTrueSet) title = "Single answer";
-    else title = "Multi-select";
+    if (chooseType === 1) title = "Single answer";
+    else if (chooseType === 2) title = "Multi-select";
+    else title = "Text answer";
     this.setState({
       questionType: {
         title: title,
-        isOneAnswer: isTrueSet,
+        typeAnswer: chooseType,
         isChange: true
       },
       data: {
         ...this.state.data,
-        is_one_right_ans: isTrueSet
+        type: chooseType
       }
     });
   };
@@ -335,16 +341,14 @@ class QuestionCreatePopup extends React.Component {
               <div className="choose-question-types">
                 <Select
                   defaultValue={
-                    typeof data !== "undefined"
-                      ? `${data.is_one_right_ans === true ||
-                          data.is_one_right_ans === 1}`
-                      : "true"
+                    typeof data !== "undefined" ? `${data.type}` : `1`
                   }
                   onChange={this.onSelectQuestionTypeHandler}
                   style={{ width: 150 }}
                 >
-                  <Option key={true}>Single answer</Option>
-                  <Option key={false}>Multi select</Option>
+                  <Option key={1}>Single answer</Option>
+                  <Option key={2}>Multi select</Option>
+                  <Option key={3}>Text answer</Option>
                 </Select>
               </div>
 
@@ -359,15 +363,19 @@ class QuestionCreatePopup extends React.Component {
                 value={this.state.data.question}
                 onChange={this.handleOnChangeInput}
               />
-              {element}
+              {questionType.typeAnswer !== 3 ? (
+                <div>
+                  {element}
+                  <button
+                    type="button"
+                    style={{ display: isDisplay }}
+                    onClick={this.addQuestionOnclick}
+                  >
+                    Add another option
+                  </button>
+                </div>
+              ) : null}
 
-              <button
-                type="button"
-                style={{ display: isDisplay }}
-                onClick={this.addQuestionOnclick}
-              >
-                Add another option
-              </button>
               <hr />
             </div>
             <div className="popup-footer">

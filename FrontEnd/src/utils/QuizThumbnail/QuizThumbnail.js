@@ -82,9 +82,9 @@ class QuizThumbnail extends React.Component {
     //calculate the accuracy
     let rightAnswer = 0;
     data.forEach(attempt => {
-      if (attempt.question.is_one_right_ans) {
+      if (attempt.question.type === 1) {
         if (attempt.question_choice.is_right === 1) rightAnswer++;
-      } else {
+      } else if (attempt.question.type === 2) {
         let questionRightTotal = 0;
         let multiRightTotal = 0;
         for (let i = 0; i < attempt.question.question_choices.length; i++)

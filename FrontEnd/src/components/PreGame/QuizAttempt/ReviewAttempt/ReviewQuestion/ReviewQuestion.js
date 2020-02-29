@@ -86,7 +86,11 @@ class ReviewQuestion extends React.Component {
           </p>
         </div>
         <hr />
-        <div className="review-question-options">{answerElm}</div>
+        {data.question.type === 3 ? (
+          <label>{data.answer_text}</label>
+        ) : (
+          <div className="review-question-options">{answerElm}</div>
+        )}
       </div>
     );
   }

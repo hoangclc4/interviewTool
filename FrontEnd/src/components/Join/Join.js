@@ -31,8 +31,6 @@ class Join extends React.Component {
   componentDidMount() {
     this.props.showListUserDoQuestionTable();
     this.props.showListTableBySubject();
-    this.props.closeQuestionTableByCode()
-
   }
   UNSAFE_componentWillReceiveProps(nextProps) {
     // console.log("subject", nextProps.user);
@@ -57,7 +55,6 @@ class Join extends React.Component {
     this.setState({
       showQuizCode: !this.state.showQuizCode
     });
-    this.props.closeQuestionTableByCode()
   };
   showLimitTableBySubject = question_tables => {
     let arr = [];
@@ -240,10 +237,7 @@ const mapDispatchToProps = (dispatch, props) => {
     },
     updateUser: user => {
       dispatch(actions.updateUser(user));
-    }, closeQuestionTableByCode: () => {
-      dispatch(actions.closeQuestionTableByCode());
-    },
-
+    }
   };
 };
 const mapStateToProps = state => {
