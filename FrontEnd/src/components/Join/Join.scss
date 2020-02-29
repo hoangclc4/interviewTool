@@ -1,0 +1,236 @@
+.join-container {
+    min-height: 100%;
+    min-width: 100%;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    background: #F9F9F9;
+    padding: 0 10px;
+    margin-top: 56px;
+
+    .enter-quiz {
+        height: fit-content;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background: #f9f9f9;
+        flex-wrap: wrap;
+        max-width: 1450px;
+        align-self: center;
+        width: 100%;
+
+        .code-field {
+            border-radius: 15px;
+            background: white;
+            min-height: 100%;
+            height: 200px;
+            flex-basis: 70%;
+            margin-right: 30px;
+            box-shadow: 0px 1px 2px 2px rgba(212, 205, 212, 1);
+            padding: 0 5px;
+            margin-top: 20px;
+            position: relative;
+            max-width: 1200px !important;
+
+            .input-code {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                border: 2px solid #A4A4A4;
+                border-radius: 10px;
+                padding: 4px 4px;
+                padding-bottom: 5px;
+                display: flex;
+                flex-direction: row;
+                height: 60px;
+                min-width: fit-content !important;
+
+                input {
+                    border-radius: 8px;
+                    border: 1px solid #EAEAEA;
+                    margin-right: 10px;
+                    text-indent: 10px;
+                    font-size: 18px;
+                    width: 100%;
+                    min-width: 50px;
+                    font-family: QuickSand;
+                    font-weight: 600;
+                }
+
+                button {
+                    background-color: #FD7E14;
+                    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15), 0 2px 0 #FD7E14, 0 4px 6px rgba(0, 0, 0, 0.45);
+                    border: none;
+                    border-radius: 5px;
+                    top: 1px;
+                    color: white;
+                    padding: 0 15px;
+                    font-weight: bold;
+                }
+            }
+        }
+
+        @media screen and (max-width: 1483px) {
+            .profile-field {
+                width: 100%;
+            }
+
+            .code-field {
+                flex-basis: 100%;
+                margin-right: 0;
+            }
+        }
+
+        .profile-field {
+            border-radius: 15px;
+            background: white;
+            flex-grow: 0;
+            box-shadow: 0px 1px 2px 2px rgba(212, 205, 212, 1);
+            min-width: 400px;
+            min-height: 200px;
+            margin-top: 20px;
+            max-width: 1200px;
+            padding-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .add-profile-icon {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                position: relative;
+
+                .join-default-ava {
+                    height: 80px;
+                    width: 80px;
+                    border-radius: 50%;
+                }
+
+                .add-profile-overlay {
+                    position: absolute;
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 50%;
+                    background: black;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    opacity: 0;
+                }
+            }
+
+
+
+            .add-profile-icon:hover {
+                .add-profile-overlay {
+                    opacity: 0.8;
+                    color: white;
+                    text-align: center;
+                    padding: 10px;
+                    font-family: QuickSand;
+                }
+            }
+
+            h5 {
+                font-family: QuickSand;
+                font-weight: 600;
+            }
+
+            .join-profile-actions {
+                display: flex;
+                flex-direction: row;
+                width: 150px;
+                justify-content: space-between;
+            }
+        }
+    }
+
+    @media screen and (max-width: 1482px) {
+        .enter-quiz {
+            justify-content: center;
+        }
+    }
+
+
+    .join-quiz-list-review {
+        max-width: 1450px;
+        min-width: 425px;
+
+        h3 {
+            padding-top: 35px;
+            font-family: QuickSand;
+            font-weight: 600;
+        }
+
+        .quiz-list-show-activity {
+            display: flex;
+            flex-direction: row;
+            overflow: scroll;
+            overflow-y: hidden;
+        }
+
+        .quiz-list-show-topic {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+    }
+
+
+    @media screen and (max-width: 1480px) {
+        .join-quiz-list-review {
+            max-width: 1200px;
+            width: 1200px;
+            align-self: center;
+        }
+    }
+
+    @media screen and (min-width: 1450px) {
+
+        //style affect wrongly if has only one table generated
+        .join-quiz-list-review {
+            width: 1450px;
+            margin: 0 auto;
+        }
+    }
+
+    @media screen and (max-width: 1230px) {
+        .join-quiz-list-review {
+            max-width: 900px;
+        }
+    }
+
+    @media screen and (max-width: 930px) {
+        .join-quiz-list-review {
+            max-width: 700px;
+        }
+    }
+
+    @media screen and (max-width: 730px) {
+        .join-quiz-list-review {
+            max-width: 500px;
+        }
+    }
+
+    @media screen and (max-width: 630px) {
+        .join-quiz-list-review {
+            max-width: 425px;
+        }
+    }
+
+    .join-input-code-overlay {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 11;
+        display: none;
+    }
+}

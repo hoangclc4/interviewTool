@@ -1,0 +1,54 @@
+.attempt-detail-container {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid gray;
+    padding: 25px 0;
+    .attempt-number-and-review-btn {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .attempt-number {
+            color:white;
+            font-family: Quicksand,Helvetica,Arial;
+            font-weight: 300;
+        }
+
+        .review-btn {
+            button{
+                border:none;
+                border-radius: 5px;
+                background: white;
+                color:#FD7E14;
+                font-size: 12px;
+                top: 0;
+                padding: 5px 20px;
+            }
+        }
+    }
+
+    .accuracy {
+        // complete quiz
+        padding: 0;
+        margin-top: 30px;
+
+        .pr-ing {
+            width: 100%;
+            background-color: #b3b3b3;
+            border-radius: 35px;
+            height: 23px;
+        }
+
+        .pr-bar {
+            width: 100%; // always done 100%
+            animation: setcolor 0s 1;
+            height: 23px;
+            background-color: #4CAF50; // need function to set color follow by acuracy
+            text-align: left;
+            text-indent: 15px;
+            color: white;
+            border-radius: 35px;
+            white-space: nowrap;
+        }
+    }
+}

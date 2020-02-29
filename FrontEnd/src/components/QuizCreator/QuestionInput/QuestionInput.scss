@@ -1,0 +1,41 @@
+.question-input {
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+    .input-group {
+        position: relative;
+        width: 100%;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+
+        input {
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            height: 35px;
+            padding: 0 10px;
+        }
+
+        span {
+            position: absolute;
+            color: #ccc;
+            margin: 0;
+
+            right: 0px;
+            top: 10px;
+            // right: 15%;
+            // top: 30%;
+            // left: 80%;
+        }
+    }
+
+    * {
+        margin: 0 5px !important;
+    }
+}

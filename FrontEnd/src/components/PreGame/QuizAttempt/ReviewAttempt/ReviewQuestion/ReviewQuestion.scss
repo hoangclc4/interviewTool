@@ -1,0 +1,38 @@
+.review-question-container {
+    width: 100%;
+    background: white;
+    padding: 25px 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+
+    border-left: 8px solid #ec0b43;
+
+    .review-question-content {
+        p {
+            font-family: Quicksand, Helvetica, Arial;
+        }
+    }
+
+    hr {
+        content: "";
+        background-color: #D8D8D8;
+    }
+
+    .review-question-options {
+        .review-option-content {
+            display: flex;
+            flex-direction: row;
+
+            span {
+                margin-right: 10px;
+                margin-bottom: 15px;
+            }
+
+            p {
+                font-family: Quicksand, Helvetica, Arial;
+                word-break: break-all;
+            }
+
+        }
+    }
+}

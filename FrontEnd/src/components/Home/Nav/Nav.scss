@@ -1,0 +1,56 @@
+.home-nav-container {
+    height: 56px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    // background-color: rgba(0, 0, 0, 0.7);
+    background-color: #fff;
+    position: fixed;
+    z-index: 10;
+
+    .logo{
+        .big-logo{
+            height: 56px;
+            position: relative;
+
+            top: 3px;
+        }
+    }
+
+    .button-group {
+        padding: 8px 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+
+        button {
+            height: 40px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+
+        }
+
+        .b-log-in {
+            background-color: #595959;
+            color: white;
+            top: 0 !important;
+        }
+
+        .b-sign-up {
+            font-family: sans-serif;
+            color: white;
+            font-weight: bold;
+            background-color: #00C985;
+            box-shadow: 0 4px 0 rgba(0, 0, 0, 0.15), 0 4px 0 #00C985, 0 4px 6px rgba(0, 0, 0, 0.45);
+            top: 0;
+        }
+
+        button:hover {
+            position: relative;
+            box-shadow: none !important;
+            top: 3px;
+        }
+    }
+}

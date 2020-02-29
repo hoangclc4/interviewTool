@@ -1,0 +1,9 @@
+.home-container{
+    display: flex;
+    flex-direction: column;
+    min-width: 450px;
+    width: 100%;
+    .nav-field{
+        height: 70px;
+    }
+}

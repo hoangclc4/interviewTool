@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+.quiz-control-host-game-container {
+    .quiz-name {
+        font-family: "PT Sans Caption";
+        font-size: 28px;
+        font-weight: bold;
+        color: #4a4a4a;
+        text-align: center;
+    }
+
+    .quiz-num {
+        font-family: 'OpenSans', sans-serif, Helvetica, Arial;
+        text-align: center;
+    }
+
+    .quiz-step-text {
+        margin-top: 20px;
+        text-align: center;
+        font-weight: 550;
+        font-family: 'OpenSans', sans-serif, Helvetica, Arial;
+        color: #4a4a4a;
+    }
+
+    .quiz-end-day{
+        text-align: center;
+        margin-top: 10px;
+        button{
+            top: 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.1);
+            font-weight: 600;
+            outline: none;
+            span{
+                margin: 0;
+                margin-right: 5px;
+                margin-left: 10px;
+            }
+            i{
+                margin: 0;
+                svg{
+                    margin: 0;
+                    margin-top: -3px;
+                }
+            }
+        }
+
+        button:hover{
+            border: 1px solid #f2f2f2;
+            color: #FD7E14;
+        }
+    }
+    
+    .quiz-end-hour-minute{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 10px;
+        .hour{
+            @extend .quiz-end-day;
+        }
+
+        .minute{
+            @extend .quiz-end-day;
+        }   
+    }
+
+    .quiz-time-left{
+        margin-top: 25px;
+        text-align: center;
+        font-size: 18px;
+        span{
+            font-weight: bold;
+            font-size: 18px;
+        }
+    }
+
+    .quiz-hosting-btn{
+        text-align: center;
+        margin-top: 25px;
+        button{
+            height: 80px;
+            width: 100%;
+            background: #FD7E14;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 28px;
+            padding: 20px;
+            font-family: "PT Sans Caption";
+            border-bottom: 6px solid rgba(0,0,0,0.2);
+            top: 0;
+            font-weight: bold;
+            transition: 0.1s all ease-in-out;
+            box-shadow: 0 3px 0 rgba(0, 0, 0, 0.15), 0 3px 0 #FD7E14, 0 3px 4px rgba(0, 0, 0, 0.45);
+        }
+
+        button:focus{
+            border: none!important;
+            top: 3px;
+        }
+
+        button::after{
+            border-bottom: 6px solid rgba(0,0,0,0.2);
+        }
+
+        button:hover{
+            opacity: 0.9;
+        }
+    }
+
+    .generated-code-container{
+        text-align: center;
+        font-family: "PT Sans Caption";
+        font-size: 36px;
+        margin-top: 30px;
+        font-weight: bold;
+    }
+}
+

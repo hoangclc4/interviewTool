@@ -1,0 +1,115 @@
+.quiz-control-question-container {
+    height: fit-content;
+    min-height: 250px;
+    max-height: 500px;
+    width: 100%;
+    background-color: #FFFFFF;
+    border-radius: 3px;
+    border: 1px solid #DCDCDC;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.15);
+    margin: 10px 0;
+    padding: 5px 0;
+    
+
+    .quiz-control-question-header {
+        width: 100%;
+        height: 50px;
+        display: flex;
+        flex-direction: row;
+        padding-left: 10px;
+        padding-right: 10px;
+        justify-content: space-between;
+
+        .question-ordinal {
+            border-radius: 5px;
+            border: 1px solid #f2f2f2;
+            padding: 5px;
+            height: fit-content;
+            font-size: 14px;
+        }
+
+        .question-tick {
+            span {
+                margin-right: 5px;
+            }
+
+            font-size: 14px;
+            padding-top: 5px;
+        }
+    }
+
+    .quiz-control-question-body {
+        padding-right: 5px;
+        .question-content {
+            padding-left: 10px;
+            padding-top: 10px;
+
+            h5 {
+                font-size: 16px;
+            }
+        }
+
+        .answers-divider {
+
+            position: relative;
+
+            .divider-name {
+
+                position: absolute;
+                left: 15px;
+                top: -8px;
+                padding: 0 10px;
+
+                p {
+                    font-size: 11px;
+                    color: #6B7C93;
+                }
+            }
+
+            hr {
+                width: 98%;
+            }
+
+            
+        }
+
+        .question-content-list {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            
+            .q-content {
+                margin-left: 10px;
+                margin-bottom: 16px;
+                width: fit-content;
+                min-width: 45%;
+                max-width: 100%;
+
+                span {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    align-items: flex-start;
+                    width:100%;
+
+                    span {
+                        margin-left: 10px;
+                        color: #725068;
+                        font-size: 14px;
+                        max-width: 700px;
+                        word-break: break-all;
+                        height: auto;
+                    }
+                }
+            }
+        }
+    }
+
+    .quiz-control-question-footer {}
+}
+
+.quiz-control-question-container:hover {
+    background: #f2f2f2;
+}

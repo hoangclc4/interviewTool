@@ -1,0 +1,185 @@
+.join-nav-container {
+    height: 58px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    background-color: #ffffff;
+    align-items: center;
+    box-shadow: 0px 3px 5px 0px rgba(214, 203, 214, 1);
+
+    z-index: 10;
+    position: fixed;
+    overflow: hidden;
+    top: 0; 
+    margin-bottom: 56px;
+    .logo {
+        img {
+            height: 56px;
+            position: relative;
+
+            top: 3px;
+        }
+    }
+
+    .input-field {
+        height: 35px;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-basis: 0%;
+
+        input {
+            position: relative;
+
+            min-width: 100px;
+            border: 1px solid #EBEBEC;
+            display: flex;
+            border-radius: 25px;
+            font-size: 16px;
+            text-indent: 15px;
+            color: gray;
+            height: 35px;
+            flex-grow: 1;
+            flex-shrink: 1;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 8px;
+            top: 8px;
+            width: 25px;
+        }
+
+    }
+
+    @media screen and (max-width: 930px) {
+        .input-field {
+            width: 0;
+            height: 0;
+
+            input {
+                min-width: 0;
+                border: none;
+            }
+
+            .search-icon {
+                display: none;
+            }
+        }
+    }
+
+    .tab-field {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        flex-grow: 1;
+
+
+
+        .tab-link {
+            padding: 0 10px;
+            display: flex;
+            flex-direction: column;
+
+            a {
+                color: #8F9098;
+                font-weight: bold;
+                height: 60px;
+                padding-right: 20px;
+                padding-left: 10px;
+                padding-top: 16%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                font-size: 18px;
+
+                span {
+                    padding: 0 5px;
+                }
+            }
+
+            .active-link {
+                color: #FD7E14;
+                border-bottom: 4px solid #FD7E14;
+                font-size: 18px;
+            }
+
+        }
+
+        @media screen and (max-width:742px) {
+            .tab-name {
+                display: none;
+            }
+        }
+
+
+
+        .activity-link {
+            height: 60px;
+            margin: 0 10px;
+
+            .active-link {
+                color: red;
+            }
+        }
+    }
+
+    @media screen and (max-width:742px) {
+        .tab-field {
+            justify-content: center;
+            a{
+                padding-top: 20px!important;
+                padding-right: 10px!important;
+            }
+        }
+    }
+
+    .button-group {
+        padding: 8px 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+
+        button {
+            height: 40px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .b-sign-up {
+            font-family: sans-serif;
+            color: white;
+            font-weight: bold;
+            background-color: #FD7E14;
+            box-shadow: 0 4px 0 rgba(0, 0, 0, 0.15), 0 4px 0 #FD7E14, 0 4px 6px rgba(0, 0, 0, 0.45);
+        }
+
+        button:hover {
+            position: relative;
+            box-shadow: none !important;
+            top: 3px;
+        }
+
+        .ant-btn.ant-dropdown-trigger {
+            margin: 0 5px;
+            border-radius: 50%;
+            padding: 5px 10px;
+            padding-bottom: 7px;
+            border: 1px solid #FD7E14;
+            color: #FD7E14;
+            height: fit-content;
+            align-self: center;
+        }
+
+        .ant-btn.ant-dropdown-trigger:hover {
+            color: #FD7E14;
+        }
+
+        .ant-btn.ant-dropdown-trigger.ant-dropdown-open {
+            color: #FD7E14;
+        }
+    }
+}

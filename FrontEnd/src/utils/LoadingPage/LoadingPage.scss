@@ -1,0 +1,18 @@
+.App {
+    text-align: center;
+  }
+  
+.waiting-logo {
+    height: 80vmin;
+  }
+  
+  .waiting-header {
+    background-color: #F2F8FC;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(20px + 2vmin);
+    color: #318CD6;
+  }

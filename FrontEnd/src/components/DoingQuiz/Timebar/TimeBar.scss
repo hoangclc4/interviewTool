@@ -1,0 +1,161 @@
+// Color Variables ======================================
+$green: #75b800;
+$gray-light: #eef1f3;
+
+// Bar Variables ========================================
+$bar-size: 5px;
+$bar-radius: 60px;
+$bar-bg: rgba(0, 0, 0, 0.075);
+
+// Animation =============================================
+// Edit these at random intervals to change the animation.
+@keyframes loader {
+    100% {
+        width: 0%;
+       
+    }
+
+    95% {
+        width: 5%;
+        background-color: #ff0000;
+    }
+
+    90% {
+        width: 10%;
+        background-color: #ff0000;
+    }
+
+    85% {
+        width: 15%;
+        background-color: #ff6600;
+    }
+
+    80% {
+        width: 20%;
+        background-color: #ff6600;
+    }
+
+    75% {
+        width: 25%;
+        background-color: #ff6600;
+    }
+
+
+    70% {
+        width: 30%;
+        background-color: #ff6600;
+    }
+
+    65% {
+        width: 35%;
+        background-color: #ff6600;
+    }
+
+    60% {
+        width: 40%;
+        background-color: #ff8c1a;
+    }
+
+    55% {
+        width: 45%;
+        background-color: #ff8c1a;
+    }
+
+    50% {
+        width: 50%;
+        background-color: #ff8c1a;
+    }
+
+    45% {
+        width: 55%;
+        background-color: #ff8c1a;
+    }
+
+
+    40% {
+        width: 60%;
+        background-color:#99ff33;
+    }
+
+
+    35% {
+        width: 65%;
+        background-color:#99ff33;
+    }
+
+    30% {
+        width: 70%;
+        background-color:#99ff33;
+    }
+
+    25% {
+        width: 75%;
+        background-color:#99ff33;
+    }
+
+    20% {
+        width: 80%;
+        background-color:#99ff33;
+    }
+
+    15% {
+        width: 85%;
+        background-color:#00ff00;
+    }
+
+    10% {
+        width: 90%;
+        background-color:#00ff00;
+    }
+
+    5% {
+        width: 95%;
+        background-color:#00ff00;
+    }
+
+    0% {
+        width: 100%;
+        background-color:#00ff00;
+    }
+
+}
+
+// Bar ============================================
+.htprogress-bar {
+    border-radius: $bar-radius;
+    overflow: hidden;
+    width: 100%;
+
+    span {
+        display: block;
+    }
+}
+
+.htbar {
+    background: $bar-bg;
+    height: 7px;
+}
+
+.htprogress {
+    //animation: loader 30s linear forwards;
+    // Change the animation fill mode 'infinite' to 'forwards' to stop the animation from repeating.
+    
+    color: #fff;
+    padding: $bar-size;
+    width: 0;
+}
+
+// Vertical Centering ==============================
+// You don't need this to make it work on your site.
+.htprogress-bar {
+    left: 0%;
+    max-width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translate3d(-50%, -50%, -50%);
+}
+
+.time-bar-container {
+    position: relative;
+    height: 15px;
+}

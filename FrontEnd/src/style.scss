@@ -1,0 +1,34 @@
+html,
+body,
+#root {
+    height: 100%;
+}
+
+.page-container {
+    height: 100%;
+}
+
+body {
+    margin: 0 !important;
+}
+
+p {
+    margin: 0 !important;
+}
+
+* {
+    font-family:
+        OpenSans,
+        sans-serif,
+        Helvetica,
+        Arial;
+    ;
+}
+
+button{
+    outline: none!important;
+}
+
+input{
+    outline: none!important;
+}

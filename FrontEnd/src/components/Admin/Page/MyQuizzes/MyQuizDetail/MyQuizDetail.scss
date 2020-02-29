@@ -1,0 +1,89 @@
+.my-quiz-detail-container {
+    height: 125px;
+
+    background-color: #fff;
+    padding: 16px;
+    border-bottom: 1px solid #dedede;
+
+    display: flex;
+    flex-direction: row;
+
+    .my-quiz-image {
+        height: 90px;
+        width: 90px;
+        background: #f2f2f2;
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+
+        img {
+            height: auto;
+            width: 88px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    .my-quiz-info {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 0 10px;
+
+        .name-and-status {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .name {
+                font-size: 16px;
+                font-family: OpenSans, sans-serif, Helvetica, Arial;
+                font-weight: bold;
+
+                span {
+                    color: #6b7c93;
+                    font-size: 12px;
+                }
+            }
+
+            .is-drafting {
+                padding: 2px 8px;
+                background: #F14D76;
+                border-radius: 5px;
+                color: white;
+                font-size: 13px;
+            }
+        }
+
+        .play-detail {
+            display: flex;
+            flex-direction: row;
+            padding-top: 10px;
+
+            .play {
+                span {
+                    margin-right: 5px;
+                }
+
+                font-size: 12px;
+                color:#6B7C93;
+                margin-right: 7px;
+            }
+
+            .grade {
+                span {
+                    margin-right: 3px;
+                }
+
+                font-size: 12px;
+                color:#6B7C93;
+            }
+        }
+    }
+}
+
+.my-quiz-detail-container:hover {
+    background: #f5f5f5;
+}

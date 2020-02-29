@@ -1,0 +1,197 @@
+.settings-wrapper {
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f2f2f2;
+
+    .settings-container {
+        padding-top: 70px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 1300px;
+        width: 80%;
+        min-height: 100%;
+
+        .page-title {
+            color: #292A3A;
+            font-family: QuickSand;
+        }
+
+        .profile-settings {
+            max-width: 480px;
+            background: white;
+            margin: 0 auto;
+            width: 50%;
+            border-radius: 10px;
+            padding: 10px;
+            padding-bottom: 0;
+
+            .set-section-name {
+                font-family: "PT Sans Caption";
+                color: #B69DB8;
+                margin-bottom: 10px;
+            }
+
+            .set-ava {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                cursor: pointer;
+                margin-bottom: 15px;
+
+                .settings-section {
+                    flex-basis: 90%;
+                    flex-grow: 1;
+
+                    .set-section-title {
+                        font-family: QuickSand;
+                        font-weight: 900;
+                        font-size: 16px;
+                    }
+
+                    .set-section-content {
+                        color: #AAA9C4;
+                        font-size: 15px;
+                    }
+                }
+
+                .set-icon {
+                    align-self: center;
+                }
+            }
+
+            .set-user-name {
+                @extend .set-ava;
+            }
+
+            .set-name {
+                @extend .set-ava;
+            }
+
+            .set-grade {
+                @extend .set-ava;
+            }
+        }
+
+        .account-settings {
+            max-width: 480px;
+            background: white;
+            margin: 0 auto;
+            width: 50%;
+            border-radius: 10px;
+            padding: 10px;
+            padding-bottom: 0;
+
+            .set-section-name {
+                font-family: "PT Sans Caption";
+                color: #B69DB8;
+                margin-bottom: 10px;
+            }
+
+            .set-update-pass-section {
+                display: flex;
+                flex-direction: row;
+                margin-bottom: 15px;
+
+                .sec-title {
+                    flex-grow: 1;
+                    font-weight: 600;
+                    font-family: QuickSand;
+                }
+            }
+
+            .set-delete-section {
+                @extend .set-update-pass-section;
+            }
+
+            .set-logout-section {
+                @extend .set-update-pass-section;
+            }
+        }
+    }
+}
+
+// .w3-animate-bottom {
+//     position: relative;
+//     animation: animatebottom 0.4s
+// }
+
+// @keyframes animatebottom {
+//     from {
+//         bottom: -300px;
+//         opacity: 0
+//     }
+
+//     to {
+//         bottom: 0;
+//         opacity: 1
+//     }
+// }
+
+.join-set-pop-up {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    z-index: 15;
+
+    .join-set-pop-up-inner {
+        position: relative;
+        left: 50%;
+        background: white;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        margin: 10px 0;
+        width: 50%;
+        height: fit-content;
+        min-width: 300px;
+        max-width: 500px;
+        transform: translate(-50%, 350px);
+        padding: 0;
+        z-index: 15;
+        padding: 10px;
+        animation: animatebottomSetPopUp 0.4s ease ;
+
+        @keyframes animatebottomSetPopUp {
+            from {
+                bottom: -300px;
+                opacity: 0;
+            }
+        
+            to {
+                bottom: 0;
+                opacity: 1;
+            }
+        }
+
+        .set-btn-group {
+            .set-cancel-btn {
+                height: 30px;
+                border-radius: 5px;
+                top: 0;
+                width: fit-content;
+                padding: 5px 10px;
+                border: none;
+            }
+
+            .set-save-btn {
+                @extend .set-cancel-btn;
+            }
+        }
+
+
+    }
+}

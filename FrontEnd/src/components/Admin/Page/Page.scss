@@ -1,0 +1,152 @@
+.admin-page-container {
+    height: fit-content;
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: #F2F2F2;
+    margin-top: 56px;
+
+    .admin-control-container {
+        width: 200px;
+        min-width: 180px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding-top: 30px;
+
+        .admin-active-tab {
+            span {
+               color: #FD7E14;
+               a{
+                   font-weight: bold;
+               }
+            }
+        }
+
+        .admin-name-and-ava {
+            display: flex;
+            flex-direction: row;
+            padding-left: 5px;
+
+            .admin-ava {
+                img {
+                    height: 44px;
+                    width: 44px;
+                    margin: 0px 8px;
+                    border-radius: 50%;
+                }
+            }
+
+            .admin-name {
+                .admin-profile {
+                    border: none;
+                    background: none;
+                    outline: none;
+                    top: 0;
+                    color: blue;
+                    width: 90%;
+                    height: 24px;
+                    text-align: left;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    font-size: 13px;
+                    text-decoration: underline;
+                    padding: 0;
+                    margin-top: 0;
+                }
+            }
+        }
+
+        .admin-create-new-quiz {
+            margin-top: 15px;
+
+            button {
+                span {
+                    margin-right: 8px;
+                }
+
+                border-radius: 3px;
+                border: 1px solid #ccc;
+                background: none;
+                outline: none;
+                top: 0;
+                color: #6B6C77;
+                width: 90%;
+                height: 24px;
+                text-align: left;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                font-size: 13px;
+                margin-left: 8px;
+                text-align: center;
+                height: 30px;
+                background: white;
+            }
+        }
+
+        .admin-find-quiz {
+            margin-top: 15px;
+
+            .btn-admin-find-quiz {
+                span {
+                    margin-right: 10px;
+                }
+
+                border:none;
+                background: none;
+                outline: none;
+                top: 0;
+                color: #6B6C77;
+                width: 90%;
+                text-align: left;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                font-size: 13px;
+                text-align: left;
+                padding: 8px 0 8px 18px;
+                //border-left: 4px solid #FD7E14;// use if active
+            }
+        }
+
+        .admin-my-quizzes {
+            @extend .admin-find-quiz;
+        }
+
+        .admin-reports {
+            @extend .admin-find-quiz;
+        }
+
+        .admin-collections {
+            @extend .admin-find-quiz;
+        }
+
+        .admin-profile {
+            @extend .admin-find-quiz;
+        }
+
+        .admin-profile {
+            @extend .admin-find-quiz;
+        }
+
+        .admin-settings {
+            @extend .admin-find-quiz;
+        }
+
+        .admin-log-out {
+            @extend .admin-find-quiz;
+        }
+    }
+
+    .admin-tab-select-container {
+        height: fit-content;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-grow: 1;
+    }
+}
